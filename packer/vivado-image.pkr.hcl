@@ -36,6 +36,7 @@ source "googlecompute" "vivado" {
   disk_type                = "pd-ssd"
   image_name               = "vivado-2020-1-{{timestamp}}"
   image_family             = "vivado-2020-1"
+  service_account_email    = "fpga-builder@${var.project_id}.iam.gserviceaccount.com"
   ssh_username             = "packer"
   ssh_timeout              = "3h"
 }

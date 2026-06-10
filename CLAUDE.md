@@ -104,5 +104,6 @@ cd infra && ./tf.sh dev plan && ./tf.sh dev apply
 - [Status](docs/status.md) — current state of all infrastructure and next steps
 - [Getting Started](docs/getting-started.md) — first-time setup from scratch
 - [Workflow](docs/workflow.md) — day-to-day build submission and monitoring
+- [Troubleshooting](docs/troubleshooting.md) — IAM requirements, common failures, diagnosing with Claude
 - [Remote Desktop Plan](docs/vivado-remote-desktop-plan.md) — design and PoC results
 - [Architecture](docs/architecture.md) — system design and component diagram
