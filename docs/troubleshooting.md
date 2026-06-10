@@ -69,8 +69,8 @@ If still failing, check `service_account_email` is set in
 **Cause:** Network or firewall issue preventing Packer SSH access to the bake VM.
 
 **Fix:** Confirm Private Google Access is enabled on the subnet (Terraform
-networking module handles this). Check the bake VM has a public IP or that
-`use_iap = true` is set in the Packer source block.
+networking module handles this). The Packer bake VM in this project gets an
+external IP by default, so direct SSH should work without `use_iap`.
 
 ---
 

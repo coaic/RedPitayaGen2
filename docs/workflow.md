@@ -69,7 +69,7 @@ Only needed when changing Vivado version or adding system packages:
 cd packer
 packer build \
   -var project_id=${GCP_PROJECT} \
-  -var vivado_installer_gcs=gs://${BUCKET}/bootstrap/installer.tar.gz \
+  -var vivado_installer_gcs=gs://redpitaya-fpga-builds-fpga-installer/Xilinx_Unified_2020.1_*.tar.gz \
   vivado-image.pkr.hcl
 ```
 

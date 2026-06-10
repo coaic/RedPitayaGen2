@@ -79,5 +79,5 @@ Per build:
 - **Edition**: WebPACK (free, no licence file needed)
 - **Device**: Zynq-7020 (xc7z020clg484-1) — Red Pitaya Gen 2 part
 - **Version**: 2020.1 (last version with Zynq-7000 WebPACK support before Xilinx UG changes)
-- **Build trigger**: `make fpga` in the project repo root
-- **Outputs expected at**: `out/*.bit`
+- **Build trigger**: `make PRJ=v0.94 MODEL=Z20_G2 prj/v0.94/out/red_pitaya.bit`
+- **Output**: `prj/v0.94/out/red_pitaya.bit`

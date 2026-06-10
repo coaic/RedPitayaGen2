@@ -75,8 +75,6 @@ WNS=$(grep -Po 'WNS\(ns\)\s*\K-?[\d.]+' prj/v0.94/out/*.rpt 2>/dev/null | head -
 echo "${TAG},${WNS}" | gsutil cp - "gs://BUCKET_PLACEHOLDER/JOB_NAME_PLACEHOLDER/${TAG}/wns.csv"
 
 [ -z "${BUILD_FAILED:-}" ]
-
-[ -z "${BUILD_FAILED:-}" ]
 EOF
 
 # Substitute placeholders that aren't shell vars on the VM

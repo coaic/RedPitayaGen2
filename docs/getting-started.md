@@ -28,10 +28,9 @@ Enable billing on the project in the GCP Console before proceeding.
 
 ## Step 2 — Configure Your Environment
 
-Copy and edit the dev environment config:
+Edit the dev environment config:
 
 ```bash
-cp infra/environments/dev.yml infra/environments/dev.yml
 # edit infra/environments/dev.yml — set project_id and submitter_email
 ```
 

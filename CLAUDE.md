@@ -46,7 +46,7 @@ redpitaya-cloud/
 
 | Resource | Name | Notes |
 |---|---|---|
-| Project | `redpitaya-fpga-builds` | Billing account `01585C-551A25-735AA8` |
+| Project | `redpitaya-fpga-builds` | Billing account in `dev.local.yml` (gitignored) |
 | Artifacts bucket | `redpitaya-fpga-builds-fpga-artifacts` | 30-day lifecycle |
 | Installer bucket | `redpitaya-fpga-builds-fpga-installer` | Vivado 2020.1 installer |
 | Terraform state | `redpitaya-fpga-builds-fpga-tfstate` | Versioned |

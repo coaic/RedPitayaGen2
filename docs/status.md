@@ -40,4 +40,3 @@ naming refers to the Red Pitaya software release, not the Vivado version.
 after first SSH in. If password is forgotten, SSH in again and reset it.
 
 **Billing account ID**: stored in `infra/environments/dev.local.yml` (gitignored).
-Value: `01585C-551A25-735AA8`.

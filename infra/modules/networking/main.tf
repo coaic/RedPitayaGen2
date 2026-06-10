@@ -35,3 +35,22 @@ resource "google_compute_router_nat" "default" {
   nat_ip_allocate_option             = "AUTO_ONLY"
   source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
 }
+
+# IAP RDP tunnel for the Vivado remote desktop VM.
+# Allows IAP (35.235.240.0/20) to reach port 3389 on VMs tagged vivado-desktop.
+# If this firewall was created manually before Terraform managed it, import it with:
+#   terraform import module.networking.google_compute_firewall.allow_rdp_iap \
+#     projects/<project>/global/firewalls/allow-rdp-iap
+resource "google_compute_firewall" "allow_rdp_iap" {
+  name    = "allow-rdp-iap"
+  project = var.project_id
+  network = "projects/${var.project_id}/global/networks/default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["3389"]
+  }
+
+  source_ranges = ["35.235.240.0/20"]
+  target_tags   = ["vivado-desktop"]
+}

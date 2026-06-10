@@ -34,8 +34,7 @@ if ! gcloud compute instances describe "${INSTANCE}" \
     --boot-disk-size=200GB \
     --boot-disk-type=pd-balanced \
     --no-address \
-    --tags=vivado-desktop \
-    --metadata=enable-oslogin=TRUE
+    --tags=vivado-desktop
   echo "VM created."
 else
   echo "Starting ${INSTANCE}..."

@@ -7,5 +7,8 @@ infra/environments/*.local.yml
 # Packer
 packer/packer_cache/
 
+# Claude Code — local settings contain machine-specific paths
+.claude/settings.local.json
+
 # macOS
 .DS_Store
