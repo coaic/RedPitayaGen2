@@ -6,7 +6,7 @@ set -e
 exec > >(tee /var/log/build.log) 2>&1
 
 export HOME=/root
-GCP_SDK_BIN=$(dirname $(command -v gsutil 2>/dev/null || echo /usr/lib/google-cloud-sdk/bin/gsutil))
+GCP_SDK_BIN=$(dirname "$(command -v gsutil 2>/dev/null || echo /usr/lib/google-cloud-sdk/bin/gsutil)")
 
 # Vivado strategies indexed by BATCH_TASK_INDEX (0..7).
 # See UG904 and `report_strategy` in Vivado for the full list.
@@ -32,6 +32,7 @@ rm -rf project
 git clone --depth=1 --branch "@@GIT_REF@@" "@@GIT_REPO@@" project
 cd project
 
+# shellcheck source=/dev/null
 source /tools/Xilinx/Vivado/2020.1/settings64.sh
 export PATH="${GCP_SDK_BIN}:${PATH}"
 

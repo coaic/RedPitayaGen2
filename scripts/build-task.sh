@@ -32,6 +32,7 @@ rm -rf project
 git clone --depth=1 --branch "@@GIT_REF@@" "@@GIT_REPO@@" project
 cd project
 
+# shellcheck source=/dev/null
 source /tools/Xilinx/Vivado/2020.1/settings64.sh
 
 make PRJ=v0.94 MODEL=Z20_G2 prj/v0.94/out/red_pitaya.bit || BUILD_FAILED=1
