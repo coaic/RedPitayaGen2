@@ -103,7 +103,7 @@ CONFIG=$(cat <<EOF
           "bootDisk": {
             "image": "${IMAGE_URI}",
             "type": "pd-balanced",
-            "sizeGb": 160
+            "sizeGb": 200
           }
         }
       }

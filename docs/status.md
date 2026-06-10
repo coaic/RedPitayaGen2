@@ -1,8 +1,8 @@
 # Project Status
 
-Last updated: 2026-06-09
+Last updated: 2026-06-10
 
-## Infrastructure — All Provisioned
+## Infrastructure — All Provisioned and Validated
 
 | Component | Status | Notes |
 |---|---|---|
@@ -10,34 +10,21 @@ Last updated: 2026-06-09
 | Terraform infrastructure | ✅ Applied | VPC, GCS buckets, IAM, NAT, budget |
 | Vivado installer in GCS | ✅ Uploaded | `gs://redpitaya-fpga-builds-fpga-installer/Xilinx_Unified_2020.1_0602_1208.tar.gz` |
 | Packer image `vivado-redpitaya` | ✅ Ready | `vivado-2020-1-1780984785` — Vivado 2020.1 + XFCE + XRDP |
-| Cloud Batch pipeline | ✅ Working | Tested against placeholder repo |
+| Cloud Batch pipeline | ✅ Validated | Built `red_pitaya.bit` from `RedPitaya/RedPitaya-FPGA` master in ~8.5 min |
 | IAP firewall rule | ✅ Applied | `allow-rdp-iap` → port 3389 |
 | `vivado-desktop` VM | ✅ On-demand | Created/deleted by scripts — no idle cost |
 | Remote desktop PoC | ✅ Validated | XRDP + XFCE responsive, Vivado GUI usable |
 
 ## Next Steps
 
-### 1. Test batch build against actual Red Pitaya repo
-
-This is the immediate next step — not yet done:
-
-```bash
-export GCP_PROJECT=redpitaya-fpga-builds
-./scripts/submit-build.sh git@github.com:RedPitaya/RedPitaya-FPGA.git master
-```
-
-Expected: Vivado 2020.1 builds `prj/v0.94/out/red_pitaya.bit` for Zynq-7020 Gen 2.
-Fetch result: `gsutil cp "gs://redpitaya-fpga-builds-fpga-artifacts/<job-name>/*.bit" ./`
-
-### 2. Merge `feat/vivado-remote-desktop` → `main`
-
-The remote desktop work is on `feat/vivado-remote-desktop`. Once the batch build
-validates, merge to main.
-
-### 3. Clean up stale branches
+### 1. Clean up stale branches
 
 - `fix/purge-billing-account-from-history` — pending review/merge or delete
 - `feat/cloud-build-infrastructure` — superseded by main, can be deleted
+
+### 2. KiwiSDR — Vivado 2024.2 image
+
+Apply the same Packer + Cloud Batch pattern for KiwiSDR (Vivado 2024.2, larger disk needed).
 
 ## Key Facts to Remember
 
