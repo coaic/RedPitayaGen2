@@ -31,6 +31,11 @@ Open Microsoft Remote Desktop → `localhost:3389` → username `packer`.
 Vivado is pre-installed. Make changes, export any modified IP XCI files back to
 your local checkout, then push.
 
+> **Cost**: ~$0.19/hr while running (n2-standard-4). `stop-desktop.sh` deletes
+> the VM entirely — no idle disk charges.
+
+> **Forgotten password**: SSH into the VM and run `sudo passwd packer` to reset it.
+
 ```bash
 ./scripts/stop-desktop.sh   # deletes VM when done — no idle charges
 ```

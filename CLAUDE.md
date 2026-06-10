@@ -38,8 +38,7 @@ redpitaya-cloud/
     ├── getting-started.md        # First-time setup from scratch
     ├── workflow.md               # Day-to-day build submission and monitoring
     ├── setup-notes.md            # Gotchas and lessons learned
-    ├── vivado-remote-desktop-plan.md  # Remote desktop design + PoC results
-    └── status.md                 # Current state — read this first
+    └── vivado-remote-desktop-plan.md  # Remote desktop design + PoC results
 ```
 
 ## GCP Resources (all provisioned)
@@ -101,7 +100,6 @@ cd infra && ./tf.sh dev plan && ./tf.sh dev apply
 
 ## Docs
 
-- [Status](docs/status.md) — current state of all infrastructure and next steps
 - [Getting Started](docs/getting-started.md) — first-time setup from scratch
 - [Workflow](docs/workflow.md) — day-to-day build submission and monitoring
 - [Troubleshooting](docs/troubleshooting.md) — IAM requirements, common failures, diagnosing with Claude
