@@ -34,7 +34,7 @@ source "googlecompute" "vivado" {
   disk_size           = 120              # Vivado is ~50 GB extracted
   disk_type           = "pd-ssd"
   image_name          = "vivado-2020-1-{{timestamp}}"
-  image_family        = "vivado-redpitaya"
+  image_family        = "vivado-2020-1"
   ssh_username        = "packer"
 }
 

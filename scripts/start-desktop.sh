@@ -2,7 +2,7 @@
 # start-desktop.sh — create (if needed) and start the Vivado remote desktop VM,
 # then open an IAP RDP tunnel.
 #
-# The VM is created fresh from the vivado-redpitaya image each session and
+# The VM is created fresh from the vivado-2020-1 image each session and
 # deleted by stop-desktop.sh — no idle disk cost.
 #
 # Usage: ./scripts/start-desktop.sh
@@ -24,12 +24,12 @@ INSTANCE="vivado-desktop"
 # Create VM if it doesn't exist
 if ! gcloud compute instances describe "${INSTANCE}" \
      --zone="${ZONE}" --project="${PROJECT}" &>/dev/null; then
-  echo "Creating ${INSTANCE} from vivado-redpitaya image..."
+  echo "Creating ${INSTANCE} from vivado-2020-1 image..."
   gcloud compute instances create "${INSTANCE}" \
     --project="${PROJECT}" \
     --zone="${ZONE}" \
     --machine-type=n2-standard-4 \
-    --image-family=vivado-redpitaya \
+    --image-family=vivado-2020-1 \
     --image-project="${PROJECT}" \
     --boot-disk-size=200GB \
     --boot-disk-type=pd-balanced \

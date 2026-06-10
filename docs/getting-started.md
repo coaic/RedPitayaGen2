@@ -72,11 +72,17 @@ This creates:
 - IAM bindings for the builder SA and your submitter email
 - Optional billing budget
 
-## Step 5 — Upload the Vivado Installer to GCS
+## Step 5 — Obtain and Upload the Vivado Installer
 
-Xilinx (AMD) requires a free account to download the installer. Download
-`Xilinx_Unified_2020.1_*.tar.gz` from the Xilinx download portal, then upload
-it to the dedicated installer bucket (permanent, no lifecycle deletion):
+> **The Vivado installer must be downloaded directly from AMD/Xilinx.**
+> It cannot be redistributed and is not included in this repository or any
+> associated GCS bucket. Download requires a free AMD account.
+>
+> Download page: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-suite/archive.html
+> Select: **Vivado 2020.1** → *Vivado HLx 2020.1: All OS installer Single-File Download*
+> File: `Xilinx_Unified_2020.1_*.tar.gz` (~52 GB)
+
+Once downloaded, upload to the dedicated installer bucket (permanent, no lifecycle deletion):
 
 ```bash
 INSTALLER_BUCKET=$(cd infra && terraform output -raw installer_bucket)
@@ -97,7 +103,7 @@ packer build \
 ```
 
 This takes ~45 minutes (install time). The resulting image is stored in GCP
-under the image family `vivado-redpitaya` and reused by every subsequent build
+under the image family `vivado-2020-1` and reused by every subsequent build
 job — you only run Packer again if you need a different Vivado version.
 
 ## Step 7 — Submit Your First Build

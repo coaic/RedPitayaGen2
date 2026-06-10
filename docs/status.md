@@ -9,7 +9,7 @@ Last updated: 2026-06-10
 | GCP project `redpitaya-fpga-builds` | ✅ Live | Billing linked |
 | Terraform infrastructure | ✅ Applied | VPC, GCS buckets, IAM, NAT, budget |
 | Vivado installer in GCS | ✅ Uploaded | `gs://redpitaya-fpga-builds-fpga-installer/Xilinx_Unified_2020.1_0602_1208.tar.gz` |
-| Packer image `vivado-redpitaya` | ✅ Ready | `vivado-2020-1-1780984785` — Vivado 2020.1 + XFCE + XRDP |
+| Packer image `vivado-2020-1` | ✅ Ready | `vivado-2020-1-1780984785` — Vivado 2020.1 + XFCE + XRDP |
 | Cloud Batch pipeline | ✅ Validated | Built `red_pitaya.bit` from `RedPitaya/RedPitaya-FPGA` master in ~8.5 min |
 | IAP firewall rule | ✅ Applied | `allow-rdp-iap` → port 3389 |
 | `vivado-desktop` VM | ✅ On-demand | Created/deleted by scripts — no idle cost |

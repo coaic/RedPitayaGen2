@@ -18,7 +18,7 @@ GIT_REF="${2:-main}"
 JOB_NAME="vivado-sweep-$(date +%Y%m%d-%H%M%S)"
 BUCKET="${PROJECT_ID}-fpga-artifacts"
 SA_EMAIL="fpga-builder@${PROJECT_ID}.iam.gserviceaccount.com"
-IMAGE_URI="projects/${PROJECT_ID}/global/images/family/vivado-redpitaya"
+IMAGE_URI="projects/${PROJECT_ID}/global/images/family/vivado-2020-1"
 
 # Vivado strategies indexed by BATCH_TASK_INDEX (0..7).
 # Strategies map to Vivado's built-in synth/impl directives.

@@ -1,6 +1,6 @@
 # Plan: Vivado Remote Desktop on GCP
 
-Cloud-hosted Vivado GUI running on an ephemeral GCP VM, connected to from a Mac via RDP. Uses the existing `vivado-redpitaya` image family (Vivado 2020.1, Ubuntu 20.04). Red Pitaya Gen 2 is the proof-of-concept target.
+Cloud-hosted Vivado GUI running on an ephemeral GCP VM, connected to from a Mac via RDP. Uses the existing `vivado-2020-1` image family (Vivado 2020.1, Ubuntu 20.04). Red Pitaya Gen 2 is the proof-of-concept target.
 
 **Workflow split:**
 - **Local (Mac):** edit RTL source files, manage git, submit builds, fetch results
@@ -76,7 +76,7 @@ Vivado needs `DISPLAY` set and a functioning X session. In an XRDP session this 
 
 ### Image family
 
-Keep using `vivado-redpitaya` — the desktop is an addition to the same image, not a separate one. Build jobs (Cloud Batch) never start the desktop session so it has no effect on synthesis performance.
+Keep using `vivado-2020-1` — the desktop is an addition to the same image, not a separate one. Build jobs (Cloud Batch) never start the desktop session so it has no effect on synthesis performance.
 
 ---
 
@@ -123,7 +123,7 @@ gcloud projects add-iam-policy-binding redpitaya-fpga-builds \
 | Machine type | `n2-standard-4` | 4 vCPU, 16 GB RAM — adequate for GUI-only Vivado |
 | Provisioning | On-demand (not SPOT) | Session must not be preempted mid-work |
 | Boot disk | 80 GB pd-balanced | OS + Vivado already in image, no large workspace needed |
-| Boot image | `vivado-redpitaya` family | Latest baked image with desktop |
+| Boot image | `vivado-2020-1` family | Latest baked image with desktop |
 | Network tag | `vivado-desktop` | Matches the IAP firewall rule above |
 | External IP | None | IAP tunnel makes this unnecessary |
 | Region | `australia-southeast1` | Same as batch jobs |
@@ -149,7 +149,7 @@ gcloud compute instances create vivado-desktop \
   --project=redpitaya-fpga-builds \
   --zone=australia-southeast1-a \
   --machine-type=n2-standard-4 \
-  --image-family=vivado-redpitaya \
+  --image-family=vivado-2020-1 \
   --image-project=redpitaya-fpga-builds \
   --boot-disk-size=80GB \
   --boot-disk-type=pd-balanced \
@@ -241,7 +241,7 @@ A 2-hour Vivado GUI session costs ~$0.40. Leaving the VM running overnight would
 
 1. ✅ Fix Packer script (Phase 1) — streaming + disk size
 2. ✅ Add XFCE + XRDP provisioners (Phase 2)
-3. ✅ Bake new `vivado-redpitaya` image (`vivado-2020-1-1780984785`)
+3. ✅ Bake new `vivado-2020-1` image (`vivado-2020-1-1780984785`)
 4. ✅ Add IAP firewall rule + IAM binding (Phase 3)
 5. ✅ Create `vivado-desktop` VM instance (Phase 4)
 6. ✅ Test connection from Mac via Microsoft Remote Desktop (Phase 5)

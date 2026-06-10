@@ -73,7 +73,7 @@ packer build \
   vivado-image.pkr.hcl
 ```
 
-New image joins the `vivado-redpitaya` family immediately. Old images are kept
+New image joins the `vivado-2020-1` family immediately. Old images are kept
 by GCP (delete manually if space is a concern).
 
 ## Monitoring Costs

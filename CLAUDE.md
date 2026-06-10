@@ -1,4 +1,4 @@
-# RedPityaGen2 — FPGA Build Infrastructure
+# redpitaya-cloud — FPGA Build Infrastructure
 
 Cloud build infrastructure for [Red Pitaya Gen 2](https://github.com/RedPitaya/RedPitaya-FPGA)
 gateware. Vivado 2020.1 has no Apple Silicon support, so all synthesis / place-and-route
@@ -10,7 +10,7 @@ configuration and RTL editing without a local x86-64 machine.
 ## Project Structure
 
 ```
-RedPityaGen2/
+redpitaya-cloud/
 ├── infra/                        # Terraform infrastructure (all applied)
 │   ├── modules/
 │   │   ├── apis/                 # GCP API enablement
@@ -50,7 +50,7 @@ RedPityaGen2/
 | Artifacts bucket | `redpitaya-fpga-builds-fpga-artifacts` | 30-day lifecycle |
 | Installer bucket | `redpitaya-fpga-builds-fpga-installer` | Vivado 2020.1 installer |
 | Terraform state | `redpitaya-fpga-builds-fpga-tfstate` | Versioned |
-| Image family | `vivado-redpitaya` | Ubuntu 20.04 Pro + Vivado 2020.1 + XFCE + XRDP |
+| Image family | `vivado-2020-1` | Ubuntu 20.04 Pro + Vivado 2020.1 + XFCE + XRDP |
 | Desktop VM | `vivado-desktop` | n2-standard-4, 200 GB, australia-southeast1-a |
 | Service account | `fpga-builder@redpitaya-fpga-builds.iam.gserviceaccount.com` | No key file |
 | IAP firewall | `allow-rdp-iap` | Allows IAP tunnel to port 3389 on `vivado-desktop` tag |

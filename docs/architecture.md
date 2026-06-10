@@ -41,7 +41,7 @@ The design is intentionally **serverless / ephemeral**:
 │  └───────────────────────────────────────────────┘   │
 │                                                      │
 │  ┌───────────────────────────────────────────────┐   │
-│  │  Custom GCP Image: vivado-redpitaya (family)  │   │
+│  │  Custom GCP Image: vivado-2020-1 (family)  │   │
 │  │  Ubuntu 20.04 + Vivado 2020.1 WebPACK        │   │
 │  │  (baked once with Packer, reused every job)  │   │
 │  └───────────────────────────────────────────────┘   │

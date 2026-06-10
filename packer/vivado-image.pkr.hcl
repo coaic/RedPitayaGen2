@@ -23,7 +23,7 @@ variable "zone" {
 
 variable "vivado_installer_gcs" {
   type        = string
-  description = "gs:// URL of Xilinx_Unified_2020.1_*.tar.gz (upload manually first)"
+  description = "gs:// URL of Xilinx_Unified_2020.1_*.tar.gz in your installer bucket. The installer must be obtained directly from AMD/Xilinx: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-suite/archive.html"
 }
 
 source "googlecompute" "vivado" {
@@ -35,7 +35,7 @@ source "googlecompute" "vivado" {
   disk_size                = 200              # streamed: OS ~10 GB + extracted ~52 GB + installed ~25 GB + desktop ~1 GB
   disk_type                = "pd-ssd"
   image_name               = "vivado-2020-1-{{timestamp}}"
-  image_family             = "vivado-redpitaya"
+  image_family             = "vivado-2020-1"
   ssh_username             = "packer"
   ssh_timeout              = "3h"
 }

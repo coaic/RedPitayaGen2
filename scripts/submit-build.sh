@@ -16,7 +16,7 @@ GIT_REF="${2:-main}"
 JOB_NAME="vivado-$(date +%Y%m%d-%H%M%S)"
 BUCKET="${PROJECT_ID}-fpga-artifacts"
 SA_EMAIL="fpga-builder@${PROJECT_ID}.iam.gserviceaccount.com"
-IMAGE_URI="projects/${PROJECT_ID}/global/images/family/vivado-redpitaya"
+IMAGE_URI="projects/${PROJECT_ID}/global/images/family/vivado-2020-1"
 
 # ---- Build script that runs on the VM -------------------------------
 
