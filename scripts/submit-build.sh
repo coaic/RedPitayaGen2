@@ -63,7 +63,7 @@ make PRJ=v0.94 MODEL=Z20_G2 prj/v0.94/out/red_pitaya.bit || BUILD_FAILED=1
 
 # Upload artifacts via curl + GCE metadata token (no gsutil dependency)
 gcs_upload /var/log/build.log "${JOB_NAME}/build.log"
-for f in prj/v0.94/out/*.bit; do
+for f in prj/v0.94/out/*.bit prj/v0.94/out/*.rpt; do
   [ -f "\$f" ] && gcs_upload "\$f" "${JOB_NAME}/\$(basename \$f)"
 done
 

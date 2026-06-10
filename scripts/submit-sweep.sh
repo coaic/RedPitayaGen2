@@ -69,6 +69,7 @@ make PRJ=v0.94 MODEL=Z20_G2 prj/v0.94/out/red_pitaya.bit || BUILD_FAILED=1
 TAG="task${BATCH_TASK_INDEX}_${SYNTH_STRAT}_${IMPL_STRAT}"
 gsutil cp /var/log/build.log "gs://BUCKET_PLACEHOLDER/JOB_NAME_PLACEHOLDER/${TAG}/"
 gsutil -m cp -r prj/v0.94/out/*.bit "gs://BUCKET_PLACEHOLDER/JOB_NAME_PLACEHOLDER/${TAG}/" 2>/dev/null || true
+gsutil -m cp -r prj/v0.94/out/*.rpt "gs://BUCKET_PLACEHOLDER/JOB_NAME_PLACEHOLDER/${TAG}/" 2>/dev/null || true
 
 # Extract WNS (Worst Negative Slack) from the timing report and stash it
 WNS=$(grep -Po 'WNS\(ns\)\s*\K-?[\d.]+' prj/v0.94/out/*.rpt 2>/dev/null | head -1 || echo "N/A")

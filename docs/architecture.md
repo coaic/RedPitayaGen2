@@ -69,7 +69,7 @@ One-time setup:
 Per build:
   submit-build.sh  →  Batch job created
                    →  SPOT VM boots (custom image)
-                   →  git clone + make fpga
+                   →  git clone + make PRJ=v0.94 MODEL=Z20_G2 ...
                    →  gsutil cp artifacts → GCS
                    →  VM terminates
 ```
