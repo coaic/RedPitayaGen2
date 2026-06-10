@@ -123,6 +123,72 @@ See `docs/troubleshooting.md` for common failure patterns.
 
 ---
 
+## Using an AI Coding Agent
+
+Claude Code (or any AI coding agent) fits naturally into this workflow. The
+`CLAUDE.md` in this repo loads automatically when you run `claude` from the
+project root, so the agent already knows the GCP project, bucket names, image
+families, build commands, and infrastructure layout — you don't need to explain
+any of that.
+
+```bash
+# From the repo root
+claude
+```
+
+### Sonnet — iterative work
+
+Use a fast, cheap model (Sonnet) for the tight edit→build→debug loop:
+
+- **Diagnose a build failure** — paste the error from `build.log` and ask what
+  caused it. Claude can read the log directly from GCS:
+  ```
+  fetch gs://redpitaya-fpga-builds-fpga-artifacts/<job>/build.log and tell me
+  why the build failed
+  ```
+- **Interpret timing** — paste the Timing Summary section and ask whether timing
+  is acceptable, what the critical path is, and what RTL or constraint change
+  would help.
+- **Edit RTL** — describe what you want to change; Claude can read the source
+  files, make the edit, and summarise what it changed and why.
+- **Submit and monitor** — ask Claude to submit a build and poll until done;
+  it can run the `submit-build.sh` and `gcloud batch` commands for you.
+- **Infrastructure changes** — ask Claude to plan and apply Terraform changes;
+  it will run `tf.sh dev plan` first and show you the diff before applying.
+
+### Opus — final review
+
+Before a significant build milestone (first timing closure, releasing a
+bitstream, changing IP configuration), switch to Opus for a thorough review:
+
+```
+/code-review ultra
+```
+
+This spawns a multi-agent cloud review of all changed files. Useful for:
+
+- Catching subtle RTL issues (unintended latches, clock-domain crossings,
+  reset strategy) before committing to a long build run
+- Verifying constraint changes are correct and complete
+- Checking that infrastructure changes (IAM, Terraform) are consistent and safe
+- Cross-checking that docs still match the implementation after a refactor
+
+Opus reviews cost more and take longer — reserve them for changes where a
+missed bug would mean another full build cycle or a broken bitstream.
+
+### Tips
+
+- Claude has no local Vivado installation and cannot run synthesis — it works
+  from source files and build logs, not from running Vivado itself.
+- For timing analysis, download the `.rpt` files from GCS alongside the `.bit`
+  and point Claude at them; they contain far more detail than the build log
+  summary.
+- If a build fails with a cryptic Vivado message, paste the full surrounding
+  context (not just the error line) — Vivado errors are often consequences of
+  an earlier root cause several lines up.
+
+---
+
 ## Infrastructure Changes
 
 When you need to change Terraform config (retention period, budget, etc.):
